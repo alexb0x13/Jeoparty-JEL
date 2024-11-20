@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome-container">
+    <h1>Welcome to Jeopardy!</h1>
+    <div class="button-container">
+        <a href="{{ url_for('game') }}" class="big-button">Play Game</a>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <a href="{{ url_for('admin') }}" class="big-button">Admin Panel</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-container">
+    <h2>Admin Panel</h2>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <!-- Reset Game Button -->
+    <div class="reset-section">
+        <form method="POST" action="{{ url_for('reset_game') }}" onsubmit="return confirm('Are you sure you want to reset the game? This will delete all categories and questions.');">
+            <button type="submit" class="reset-button">Reset Game</button>
+        </form>
+    </div>
+    
+    <div class="admin-sections">
+        <!-- Add Category Section -->
+        <div class="admin-section">
+            <h3>Add Category</h3>
+            <form method="POST" action="{{ url_for('add_category') }}" class="admin-form">
+                <div class="form-group">
+                    <label for="category-name">Category Name:</label>
+                    <input type="text" id="category-name" name="name" required>
+                </div>
+                <button type="submit">Add Category</button>
+            </form>
+        </div>
+
+        <!-- Add Question Section -->
+        <div class="admin-section">
+            <h3>Add Question</h3>
+            <form method="POST" action="{{ url_for('add_question') }}" class="admin-form">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category_id" required>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="question">Question:</label>
+                    <textarea id="question" name="question" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="answer">Answer:</label>
+                    <textarea id="answer" name="answer" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="value">Value:</label>
+                    <select id="value" name="value" required>
+                        <option value="200">$200</option>
+                        <option value="400">$400</option>
+                        <option value="600">$600</option>
+                        <option value="800">$800</option>
+                        <option value="1000">$1000</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Add Question</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

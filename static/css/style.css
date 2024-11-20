@@ -1,0 +1,294 @@
+:root {
+    --jeopardy-blue: #060CE9;
+    --light-blue: #0D19A3;
+    --gold: #FFD700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
+}
+
+nav {
+    background-color: var(--light-blue);
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.game-board {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.category {
+    background-color: var(--jeopardy-blue);
+    color: var(--gold);
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid var(--gold);
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.questions {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.question-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+}
+
+.question-cell {
+    background-color: var(--jeopardy-blue);
+    color: var(--gold);
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 2px solid var(--gold);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-cell:hover {
+    background-color: var(--light-blue);
+}
+
+.question-cell.answered {
+    background-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--jeopardy-blue);
+    color: white;
+    padding: 2rem;
+    border: 3px solid var(--gold);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.show-answer {
+    background-color: var(--gold);
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.answer-text {
+    font-size: 1.25rem;
+    color: var(--gold);
+    margin-top: 1rem;
+}
+
+/* Login Styles */
+.login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--jeopardy-blue);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+}
+
+.login-container h2 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.login-form label {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* Admin Styles */
+.admin-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.admin-container h2 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.admin-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.admin-section {
+    background-color: var(--jeopardy-blue);
+    padding: 1.5rem;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+}
+
+.admin-section h3 {
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.admin-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.admin-form label {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.admin-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert-error {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Button Styles */
+button {
+    background-color: var(--gold);
+    color: var(--jeopardy-blue);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #ffc107;
+}
+
+/* Reset Button Styles */
+.reset-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.reset-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto;
+    margin: 0 auto;
+}
+
+.reset-button:hover {
+    background-color: #c82333;
+}
+
+.hidden {
+    display: none;
+}
