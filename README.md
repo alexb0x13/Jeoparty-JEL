@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/2a1603df-6564-406e-b04e-ed74ceccecf2)
 
-
+### Bringing the "party" to Jeopardy
 A Flask-based Jeopardy-style game application for classroom use. This web application allows teachers to create and manage their own Jeopardy-style quiz games with custom categories and questions.
 
 ## Features
