@@ -1,4 +1,4 @@
-# Jeoparty Game
+# Jeoparty
 
 ![image](https://github.com/user-attachments/assets/2a1603df-6564-406e-b04e-ed74ceccecf2)
 
