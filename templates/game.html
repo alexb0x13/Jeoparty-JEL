@@ -1,35 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="game-board">
-    <div class="categories">
-        {% for category in categories %}
-        <div class="category">{{ category.name }}</div>
-        {% endfor %}
-    </div>
-    
-    <div class="questions">
-        {% for value in [200, 400, 600, 800, 1000] %}
-        <div class="question-row">
+<div class="game-container">
+    <button id="fullscreen-btn" class="fullscreen-button">
+        <span class="fullscreen-icon">⛶</span>
+    </button>
+    <div class="game-title">Jeoparty</div>
+    <div class="game-board">
+        <div class="categories">
             {% for category in categories %}
-            <div class="question-cell" 
-                 data-category="{{ category.name }}"
-                 data-value="{{ value }}"
-                 data-question="{{ category.questions|selectattr('value', 'equalto', value)|map(attribute='question')|first|default('') }}"
-                 data-answer="{{ category.questions|selectattr('value', 'equalto', value)|map(attribute='answer')|first|default('') }}">
-                ${{ value }}
+            <div class="category">{{ category.name }}</div>
+            {% endfor %}
+        </div>
+        
+        <div class="questions">
+            {% for value in [200, 400, 600, 800, 1000] %}
+            <div class="question-row">
+                {% for category in categories %}
+                <div class="question-cell" 
+                     data-category="{{ category.name }}"
+                     data-value="{{ value }}"
+                     data-question="{{ category.questions|selectattr('value', 'equalto', value)|map(attribute='question')|first|default('') }}"
+                     data-answer="{{ category.questions|selectattr('value', 'equalto', value)|map(attribute='answer')|first|default('') }}">
+                    ${{ value }}
+                </div>
+                {% endfor %}
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
 
-<div id="question-modal" class="modal">
-    <div class="modal-content">
-        <div class="question-text"></div>
-        <button class="show-answer">Show Answer</button>
-        <div class="answer-text" style="display: none;"></div>
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <div class="question-text"></div>
+            <button class="show-answer">Show Answer</button>
+            <div class="answer-text" style="display: none;"></div>
+        </div>
     </div>
 </div>
 {% endblock %}

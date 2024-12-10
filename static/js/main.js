@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Fullscreen functionality
+    const gameContainer = document.querySelector('.game-container');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    
+    fullscreenBtn.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            if (gameContainer.requestFullscreen) {
+                gameContainer.requestFullscreen();
+            } else if (gameContainer.webkitRequestFullscreen) {
+                gameContainer.webkitRequestFullscreen();
+            } else if (gameContainer.msRequestFullscreen) {
+                gameContainer.msRequestFullscreen();
+            }
+            gameContainer.classList.add('fullscreen');
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            gameContainer.classList.remove('fullscreen');
+        }
+    });
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement) {
+            gameContainer.classList.remove('fullscreen');
+        }
+    });
+
+    // Existing modal functionality
     const modal = document.getElementById('question-modal');
     const questionText = modal.querySelector('.question-text');
     const answerText = modal.querySelector('.answer-text');
